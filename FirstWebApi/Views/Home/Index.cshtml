@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+
+
+<div class="text-center">
+    @{
+        var jsonData = ViewData["Data"] as Root;
+        var temp = Convert.ToInt32(jsonData.main.temp - 273.15);
+
+        var findId = jsonData.weather.Select(c => c.id).FirstOrDefault();
+        
+        int wId = findId;
+    }
+
+    <h3> Weather Data for @jsonData.name</h3>
+
+    <p>Temperature: @temp</p>
+    <p>Weather Id: @wId</p>
+    
+    @{
+        if (wId > 199 && wId <233)
+        {
+            <img src="/Images/11d@2x.png">
+        }
+        else if (@wId > 299 && @wId < 322 || @wId == 520 || @wId == 521 || @wId == 522 || @wId == 531) // Drizzle + Rain
+        {
+            <img src="/Images/09d@2x.png" />
+        }
+
+        else if (@wId > 500 && @wId < 505) // Rain
+        {
+            <img src="/Images/09d@2x.png" />
+        }
+
+        else if (@wId == 511)
+        {
+            <img src="/Images/13d@2x.png" />
+            // Freezing rain
+        }
+
+        else if (@wId == 600 || @wId == 601 || @wId == 602 || @wId == 611 || @wId == 612 || @wId == 613 || @wId == 615 || @wId == 616 || @wId == 620 || @wId == 621 || @wId == 622) // Snow
+        {
+            <img src="/Images/13d@2x.png" />
+        }
+
+        else if (@wId == 701 || @wId == 711 || @wId == 721 || @wId == 731 || @wId == 741 || @wId == 751 || @wId == 761 || @wId == 762 || @wId == 771 || @wId == 781) // Atmosphere
+        {
+            <img src="Images/50d@2x.png" />
+        }
+
+        else if (@wId == 800)
+        {
+            <img src="Images/01d@2x.png" />
+        }
+
+        else if (@wId == 801)
+        {
+            <img src="/Images/02d@2x.png" />
+        }
+
+        else if (@wId == 802)
+        {
+            <img src="/Images/03d@2x.png" />
+        }
+
+        else if (@wId == 803 || @wId == 804)
+        {
+            <img src="/Images/04d@2x.png" />
+        }
+
+        else
+        {
+            <p>No Icon</p>
+        }
+
+    }
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+</div>
