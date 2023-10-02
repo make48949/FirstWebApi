@@ -19,7 +19,7 @@ namespace FirstWebApi.Controllers
             // Getting data from the api using the HttpClient class
             using (HttpClient client = new HttpClient())
             {
-                using HttpResponseMessage response = await client.GetAsync("http://api.openweathermap.org/data/2.5/weather?q=Odense,dk&APPID=7d625d703c019eeaf4cc874bd716bb0d");
+                using HttpResponseMessage response = await client.GetAsync("http://api.openweathermap.org/data/2.5/weather?q=Copenhagen,dk&APPID=7d625d703c019eeaf4cc874bd716bb0d");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
